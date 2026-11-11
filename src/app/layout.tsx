@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.description,
+  // Do startu strona nie jest indeksowana (adresy tymczasowe, np. *.vercel.app).
+  // Włączenie: zmienna NEXT_PUBLIC_ALLOW_INDEXING=true na produkcji.
+  robots: process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true" ? undefined : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
