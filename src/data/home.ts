@@ -50,37 +50,14 @@ export const heroFiles = [
   },
 ];
 
-export const trio = [
-  {
-    number: ".01",
-    name: "Audytujemy",
-    lead: "Zanim cokolwiek zbudujemy, sprawdzamy, co już działa, a co jest ryzykiem.",
-    points: [
-      { title: "Kod i architektura", text: "Przegląd istniejącego kodu, zależności i długu technicznego." },
-      { title: "Bezpieczeństwo", text: "Testy według OWASP i lista podatności ułożona od krytycznych." },
-      { title: "Plan", text: "Raport z priorytetami i zakresem prac, na którym da się oprzeć decyzję." },
-    ],
-  },
-  {
-    number: ".02",
-    name: "Budujemy",
-    lead: "Piszemy oprogramowanie w krótkich sprintach, z działającą wersją po każdym z nich.",
-    points: [
-      { title: "Sprinty", text: "Po każdym sprincie dostajesz działającą wersję na środowisku testowym." },
-      { title: "Code review", text: "Każda zmiana przechodzi przegląd drugiej osoby i testy automatyczne." },
-      { title: "Dokumentacja", text: "Powstaje razem z kodem, a nie po zakończeniu projektu." },
-    ],
-  },
-  {
-    number: ".03",
-    name: "Utrzymujemy",
-    lead: "Po wdrożeniu nie znikamy: pilnujemy, żeby system był szybki, aktualny i bezpieczny.",
-    points: [
-      { title: "Monitoring", text: "Śledzimy dostępność, błędy i wydajność." },
-      { title: "Aktualizacje", text: "Wgrywamy poprawki bezpieczeństwa i aktualizujemy zależności." },
-      { title: "Rozwój", text: "Kolejne funkcje dokładamy w tym samym, przewidywalnym trybie." },
-    ],
-  },
+/** Manifest pod hero. Bez liczb i obietnic, których nie da się sprawdzić. */
+export const manifesto =
+  "Jesteśmy software house'em dla firm, które sprzedają i pracują online. Zaczynamy od audytu, budujemy w krótkich sprintach i zostajemy po starcie, bo oprogramowanie, od którego zależy sprzedaż, trzeba pilnować codziennie.";
+
+export const principles = [
+  { name: "Audyt", text: "Zanim cokolwiek zbudujemy, sprawdzamy, co działa, a co jest ryzykiem." },
+  { name: "Sprinty", text: "Po każdym sprincie działająca wersja na środowisku testowym." },
+  { name: "Opieka", text: "Po starcie monitoring, aktualizacje i dalszy rozwój." },
 ];
 
 export const technologies = [

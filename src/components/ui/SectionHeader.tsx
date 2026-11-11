@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
 /**
- * Nagłówek sekcji: linia z etykietą mono (np. ".01 — USŁUGI") i notą po prawej,
- * pod nią tytuł w stopniu display z licznikiem pozycji w indeksie górnym.
+ * Nagłówek sekcji: linia z etykietą mono i notą, pod nią tytuł w stopniu display.
+ * Na desktopie opis stoi w prawej kolumnie, wyrównany do linii bazowej tytułu.
  */
 export function SectionHeader({
   label,
@@ -25,15 +25,19 @@ export function SectionHeader({
         <span>{label}</span>
         {note ? <span className="text-right">{note}</span> : null}
       </div>
-      <h2 className="display mt-8 md:mt-12">
-        {title}
-        {count !== undefined ? (
-          <span className="label ml-2 inline-block align-top text-mute md:ml-3 md:mt-2">
-            ({String(count).padStart(2, "0")})
-          </span>
+      <div className="grid-12 mt-8 gap-y-6 md:mt-12 lg:items-end">
+        <h2 className={`display col-span-12 ${children ? "lg:col-span-8" : ""}`}>
+          {title}
+          {count !== undefined ? (
+            <span className="label ml-2 inline-block align-top text-mute md:ml-3 md:mt-2">
+              ({String(count).padStart(2, "0")})
+            </span>
+          ) : null}
+        </h2>
+        {children ? (
+          <div className="col-span-12 max-w-[34rem] text-mute lg:col-span-4 lg:pb-2">{children}</div>
         ) : null}
-      </h2>
-      {children ? <div className="mt-6 max-w-[34rem] text-mute md:mt-8">{children}</div> : null}
+      </div>
     </div>
   );
 }

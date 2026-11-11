@@ -58,3 +58,11 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Hydracja i reduced motion:** sekcja „Metoda” używa `useReducedMotionSafe` (useSyncExternalStore), bo struktura HTML zależy od tej preferencji.
 - **OG image:** `next/og`, Archivo 500 (woff z @fontsource, latin + latin-ext) i Geist Mono; pliki w `src/assets/fonts`.
 - **Lighthouse (mobile, build z indeksowaniem):** wydajność 91–95, dostępność 100, best practices 100, SEO 100, CLS 0. Bez flagi indeksowania SEO spada do ~69 wyłącznie przez celowe `noindex`.
+
+## Po przeglądzie „layouty są zbyt podstawowe” (hero i piksele zostają)
+- **Trójka → Manifest:** jeden duży akapit, na desktopie słowa ciemnieją ze scrollem; pod nim trzy krótkie przypisy (Audyt, Sprinty, Opieka). Mobile i reduced motion: statyczny tekst (`useDesktopMotion`).
+- **Usługi:** panele na wysokość ekranu, które przy scrollu nakładają się na siebie; z poprzednich zostają zakładki z nazwami, więc na końcu widać cały indeks. Sticky tylko od 1024 px i od 760 px wysokości okna. Mobile: wiersze bez zmian.
+- **Realizacje na stronie głównej:** pierwszy projekt na całą szerokość, dwa kolejne w asymetrycznej parze 7 + 5 kolumn z obniżonym prawym.
+- **Bezpieczeństwo:** zamiast terminala nagłówek przypięty po lewej i sześć zasad jako duże wiersze.
+- **FAQ:** nagłówek „Pytania” przypięty po lewej z linkiem do maila, pytania po prawej.
+- **Nagłówki sekcji:** opis w prawej kolumnie, wyrównany do dołu tytułu, zamiast pod nim.

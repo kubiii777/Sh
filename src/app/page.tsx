@@ -3,18 +3,18 @@ import Link from "next/link";
 import { Faq } from "@/components/home/Faq";
 import { HeroCode } from "@/components/home/HeroCode";
 import { Method } from "@/components/home/Method";
-import { ServicesIndex } from "@/components/home/ServicesIndex";
+import { Manifesto } from "@/components/home/Manifesto";
+import { ServicesStack } from "@/components/home/ServicesStack";
 import { PixelTransition } from "@/components/pixel/PixelTransition";
 import { Arrow } from "@/components/ui/Arrow";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Terminal, TerminalLine } from "@/components/ui/Terminal";
-import { site } from "@/config/site";
+import { mailto, site } from "@/config/site";
 import { CtaSection } from "@/components/sections/CtaSection";
-import { ProjectRow } from "@/components/projects/ProjectRow";
+import { FeaturedProjects } from "@/components/projects/FeaturedProjects";
 import { bottomBeforeBand, top, topAfterBand, two } from "@/lib/spacing";
-import { faq, method, securityRules, technologies, trio } from "@/data/home";
+import { faq, manifesto, method, principles, securityRules, technologies } from "@/data/home";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
 
@@ -61,38 +61,30 @@ export default function Home() {
 
       <PixelTransition from="dark" to="light" seed={11} />
 
-      {/* 2. Trójka: trzy kolumny rozdzielone liniami */}
+      {/* 2. Manifest: akapit odsłaniany scrollem + trzy przypisy */}
       <section className="theme-light">
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
-          <FadeIn>
+          <p className="label flex justify-between border-t border-line pt-4 text-mute">
+            <span>.00 — Studio</span>
+            <span>Audyt / Budowa / Opieka</span>
+          </p>
+          <div className="grid-12 mt-10 gap-y-12 md:mt-16">
             <h2 className="sr-only">Jak działamy</h2>
-            <div className="border-y border-line lg:grid lg:grid-cols-3">
-              {trio.map((item, i) => (
-                <article
-                  key={item.name}
-                  className="border-t border-line py-10 first:border-t-0 lg:border-l lg:border-t-0 lg:px-8 lg:py-12 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
-                >
-                  <p className="label flex justify-between text-mute">
-                    <span>{item.number}</span>
-                    <span aria-hidden="true">
-                      {two(i + 1)} / {two(trio.length)}
-                    </span>
-                  </p>
-                  <h3 className="h2 mt-8 lg:mt-24">{item.name}</h3>
-                  <p className="mt-5 max-w-[30rem] text-[1.25rem] font-medium leading-[1.25] tracking-[-0.02em] lg:mt-6 lg:min-h-[5em]">
-                    {item.lead}
-                  </p>
-                  <ul className="mt-8 lg:mt-10">
-                    {item.points.map((point) => (
-                      <li key={point.title} className="border-t border-line py-4">
-                        <p className="label">{point.title}</p>
-                        <p className="mt-2 text-[1rem] text-mute">{point.text}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div className="col-span-12 lg:col-span-10 lg:col-start-3">
+              <Manifesto text={manifesto} />
             </div>
+          </div>
+          <FadeIn className="grid-12 mt-14 gap-y-0 md:mt-24">
+            <ol className="col-span-12 grid border-t border-line md:grid-cols-3 lg:col-span-10 lg:col-start-3">
+              {principles.map((item, i) => (
+                <li key={item.name} className="flex gap-5 border-b border-line py-5 md:border-b-0 md:py-6 md:pr-8">
+                  <span className="label pt-1 text-mute">{two(i + 1)}</span>
+                  <p className="text-[1rem] leading-snug">
+                    <span className="font-medium">{item.name}.</span> <span className="text-mute">{item.text}</span>
+                  </p>
+                </li>
+              ))}
+            </ol>
           </FadeIn>
         </div>
       </section>
@@ -102,9 +94,11 @@ export default function Home() {
       {/* 3. Usługi: indeks + panel szczegółów */}
       <section className="theme-dark dots">
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
-          <SectionHeader label=".01 — Usługi" note="Od audytu po utrzymanie" title="Usługi" count={services.length} />
-          <div className="mt-10 md:mt-16">
-            <ServicesIndex items={services} />
+          <SectionHeader label=".01 — Usługi" note="Od audytu po utrzymanie" title="Usługi" count={services.length}>
+            <p>Pięć obszarów, jedna metoda pracy. Każdy projekt zaczynamy od audytu, niezależnie od usługi.</p>
+          </SectionHeader>
+          <div className="mt-10 md:mt-16 lg:mt-20">
+            <ServicesStack items={services} />
           </div>
         </div>
       </section>
@@ -149,14 +143,10 @@ export default function Home() {
           >
             <p>Projekty demonstracyjne. Pokazują zakres i sposób pracy, a nie konkretnych klientów.</p>
           </SectionHeader>
-          <ul className="mt-10 border-b border-line md:mt-16">
-            {featured.map((project, i) => (
-              <li key={project.slug} className="border-t border-line">
-                <ProjectRow project={project} index={i} />
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 md:mt-14">
+          <div className="mt-10 md:mt-16">
+            <FeaturedProjects items={featured} />
+          </div>
+          <div className="mt-14 flex md:mt-24 md:justify-center">
             <Button href="/realizacje" variant="outline" className="w-full sm:w-auto">
               Wszystkie realizacje <Arrow />
             </Button>
@@ -166,31 +156,43 @@ export default function Home() {
 
       <PixelTransition from="light" to="dark" seed={41} />
 
-      {/* 6. Security by default */}
+      {/* 6. Security by default: nagłówek przypięty po lewej, zasady jako duże wiersze */}
       <section className="theme-dark dots">
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
-          <FadeIn>
-            <SectionHeader label=".04 — Bezpieczeństwo" note="W każdym projekcie" title="Security by default." />
-            <div className="grid-12 mt-10 gap-y-8 md:mt-16">
-              <p className="col-span-12 max-w-[26rem] text-mute lg:col-span-4">
-                Te zasady stosujemy w każdym projekcie, niezależnie od budżetu i terminu. Nie są opcją w wycenie.
-              </p>
-              <div className="col-span-12 lg:col-span-8">
-                <Terminal title="security.log" meta={`${two(securityRules.length)} zasad`} className="md:text-[15px] md:leading-7">
-                  <ol>
-                    {securityRules.map((rule, i) => (
-                      <li key={rule.name} className="border-b border-line py-3 last:border-b-0 md:py-4">
-                        <TerminalLine n={i + 1}>
-                          <span className="text-fg">{rule.name}</span>
-                          <span className="text-mute"> — {rule.text}</span>
-                        </TerminalLine>
-                      </li>
-                    ))}
-                  </ol>
-                </Terminal>
+          <p className="label flex justify-between border-t border-line pt-4 text-mute">
+            <span>.04 — Bezpieczeństwo</span>
+            <span>W każdym projekcie</span>
+          </p>
+          <div className="grid-12 mt-8 gap-y-10 md:mt-12">
+            <div className="col-span-12 lg:col-span-5">
+              <div className="lg:sticky lg:top-28">
+                <h2 className="display">
+                  Security <br className="hidden lg:block" />
+                  by default.
+                </h2>
+                <p className="mt-6 max-w-[24rem] text-mute md:mt-8">
+                  Te zasady stosujemy w każdym projekcie, niezależnie od budżetu i terminu. Nie są opcją w wycenie.
+                </p>
               </div>
             </div>
-          </FadeIn>
+            <FadeIn className="col-span-12 lg:col-span-7">
+              <ol className="border-t border-line">
+                {securityRules.map((rule, i) => (
+                  <li
+                    key={rule.name}
+                    className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-line py-6 md:grid-cols-[3.5rem_1fr_auto] md:py-8"
+                  >
+                    <span className="label pt-2 text-mute md:pt-3">{two(i + 1)}</span>
+                    <div>
+                      <h3 className="h3">{rule.name}</h3>
+                      <p className="mt-2 max-w-[30rem] text-[1rem] text-mute first-letter:uppercase">{rule.text}.</p>
+                    </div>
+                    <span className="label hidden pt-3 md:block">[ok]</span>
+                  </li>
+                ))}
+              </ol>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -209,15 +211,33 @@ export default function Home() {
         <Method />
       </section>
 
-      {/* 8. FAQ */}
+      {/* 8. FAQ: nagłówek przypięty po lewej, pytania po prawej */}
       <section className="theme-light">
         <div className={`wrap ${bottomBeforeBand}`}>
-          <SectionHeader label=".06 — FAQ" note="Zanim napiszesz" title="FAQ" count={faq.length} />
-          <FadeIn className="grid-12 mt-10 md:mt-16">
-            <div className="col-span-12 lg:col-span-9 lg:col-start-4">
-              <Faq items={faq} />
+          <p className="label flex justify-between border-t border-line pt-4 text-mute">
+            <span>.06 — FAQ</span>
+            <span>Zanim napiszesz</span>
+          </p>
+          <div className="grid-12 mt-8 gap-y-10 md:mt-12">
+            <div className="col-span-12 lg:col-span-4">
+              <div className="lg:sticky lg:top-28">
+                <h2 className="display">
+                  Pytania
+                  <span className="label ml-2 inline-block align-top text-mute md:ml-3 md:mt-2">({two(faq.length)})</span>
+                </h2>
+                <p className="mt-6 max-w-[20rem] text-mute md:mt-8">
+                  Nie ma tu Twojego pytania?{" "}
+                  <a href={mailto("Pytanie")} className="text-fg underline decoration-1 underline-offset-4 hover:text-mute">
+                    Napisz do nas
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
-          </FadeIn>
+            <FadeIn className="col-span-12 lg:col-span-8">
+              <Faq items={faq} />
+            </FadeIn>
+          </div>
         </div>
       </section>
 

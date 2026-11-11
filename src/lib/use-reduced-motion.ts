@@ -2,18 +2,27 @@
 
 import { useSyncExternalStore } from "react";
 
-const QUERY = "(prefers-reduced-motion: reduce)";
-
-function subscribe(callback: () => void) {
-  const media = window.matchMedia(QUERY);
-  media.addEventListener("change", callback);
-  return () => media.removeEventListener("change", callback);
+/**
+ * Media query bezpieczne dla hydracji: podczas hydracji zwraca wartość serwerową (false),
+ * a zaraz potem prawdziwą. Używać tam, gdzie od wyniku zależy struktura HTML.
+ */
+export function useMediaQuerySafe(query: string) {
+  return useSyncExternalStore(
+    (callback) => {
+      const media = window.matchMedia(query);
+      media.addEventListener("change", callback);
+      return () => media.removeEventListener("change", callback);
+    },
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
 }
 
-/**
- * prefers-reduced-motion bezpieczne dla hydracji: podczas hydracji zwraca wartość serwerową (false),
- * a zaraz potem prawdziwą. Używać tam, gdzie od wartości zależy struktura HTML.
- */
 export function useReducedMotionSafe() {
-  return useSyncExternalStore(subscribe, () => window.matchMedia(QUERY).matches, () => false);
+  return useMediaQuerySafe("(prefers-reduced-motion: reduce)");
+}
+
+/** Efekty scrolla tylko na desktopie i bez reduced motion (mobile ma wyłącznie fade-in i piksele). */
+export function useDesktopMotion() {
+  return useMediaQuerySafe("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
 }
