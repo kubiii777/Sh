@@ -33,3 +33,9 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Skala display:** 7vw zamiast 6.5vw (max nadal 7rem), żeby nagłówek hero wypełniał szerokość w dwóch liniach. Tracking -0.05em.
 - **Plakaty projektów demo:** zamiast losowego szumu ta sama schodkowa krawędź pikseli co w przejściach; jasne plakaty zlewają się z tłem strony celowo.
 - **Indeks usług w hero:** tylko od 1024 px; na mobile hero zostaje nagłówek, zdanie i przycisk.
+
+## Po drugim przeglądzie fazy 2
+- **Hero:** usunięty pasek z indeksem usług. Zamiast logów edytor z kodem pisanym na żywo (3 pliki: audyt OWASP w TS, asystent RAG, plugin Magento 2), potem wynik w terminalu i następny plik. Kod ilustracyjny, ukryty przed czytnikami, pauzuje poza ekranem i przy ukrytej karcie. Tylko od 1024 px.
+- **Usługi:** zamiast dużych wierszy z odwracaniem kolorów: indeks po lewej, panel szczegółów po prawej (nazwa, opis, 4 punkty zakresu, przycisk). Najechanie albo fokus zmienia panel. Mobile: proste wiersze. Nowe pole `highlights` w `services.ts` (posłuży też w fazie 3).
+- **Proces → „Metoda”:** 4 etapy zamiast 5 kroków ze SPEC (Audyt, Projekt, Sprinty, Wdrożenie i utrzymanie), zgodnie z prośbą właściciela. Desktop: sekcja przypięta, scroll steruje animacją każdego etapu (skan obszarów audytu, rysowana architektura, pętla sprintu, checklista startu i siatka monitoringu). Mobile i reduced motion: statyczna lista; ta sama lista jest w DOM na desktopie jako sr-only.
+- **Bez fade-in** w sekcjach Usługi i Metoda, bo mają własny ruch.

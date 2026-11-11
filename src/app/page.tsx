@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Faq } from "@/components/home/Faq";
-import { HeroTerminal } from "@/components/home/HeroTerminal";
+import { HeroCode } from "@/components/home/HeroCode";
+import { Method } from "@/components/home/Method";
+import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { PixelReveal } from "@/components/pixel/PixelReveal";
 import { PixelTransition } from "@/components/pixel/PixelTransition";
 import { Arrow } from "@/components/ui/Arrow";
@@ -11,7 +13,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Terminal, TerminalLine } from "@/components/ui/Terminal";
 import { mailto, site } from "@/config/site";
-import { faq, processSteps, securityRules, technologies, trio } from "@/data/home";
+import { faq, method, securityRules, technologies, trio } from "@/data/home";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
 
@@ -21,13 +23,8 @@ export const metadata: Metadata = {
 
 // Odstępy sekcji. Pas pikseli sam działa jak odstęp, więc od jego strony padding jest mniejszy.
 const top = "pt-16 md:pt-28 lg:pt-36";
-const bottom = "pb-16 md:pb-28 lg:pb-36";
 const topAfterBand = "pt-14 md:pt-14 lg:pt-16";
 const bottomBeforeBand = "pb-14 md:pb-14 lg:pb-16";
-
-// Proces układa się na desktopie w schody: każdy krok o kolumnę dalej.
-const stairName = ["lg:col-start-1", "lg:col-start-2", "lg:col-start-3", "lg:col-start-4", "lg:col-start-5"];
-const stairText = ["lg:col-start-6", "lg:col-start-7", "lg:col-start-8", "lg:col-start-9", "lg:col-start-10"];
 
 const two = (n: number) => String(n).padStart(2, "0");
 
@@ -38,14 +35,14 @@ export default function Home() {
     <>
       {/* 1. Hero */}
       <section className="theme-dark dots">
-        <div className="wrap pb-14 pt-14 md:pt-20 lg:pb-16 lg:pt-24">
+        <div className="wrap pb-14 pt-14 md:pt-20 lg:pb-16">
           <h1 className="display">
             <span className="lg:block">Budujemy oprogramowanie, </span>
             <span className="lg:block lg:text-right">które myśli i się broni.</span>
           </h1>
 
-          <div className="grid-12 mt-8 items-end gap-y-12 md:mt-14 lg:mt-20">
-            <div className="col-span-12 lg:col-span-6">
+          <div className="grid-12 mt-8 items-end gap-y-12 md:mt-12">
+            <div className="col-span-12 lg:col-span-5">
               <p className="lead max-w-[30rem] text-mute">AI, bezpieczeństwo, e-commerce i aplikacje webowe dla firm.</p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 md:mt-10">
                 <Button href="/kontakt" className="w-full sm:w-auto">
@@ -59,27 +56,10 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="col-span-5 col-start-8 hidden lg:block">
-              <HeroTerminal />
+            <div className="col-span-7 hidden lg:block">
+              <HeroCode />
             </div>
           </div>
-
-          {/* Indeks usług: tylko desktop, na mobile hero zostaje proste */}
-          <nav aria-label="Usługi" className="mt-16 hidden border-y border-line lg:block">
-            <ul className="grid grid-cols-6">
-              {services.map((service) => (
-                <li key={service.slug} className="border-l border-line first:border-l-0">
-                  <Link
-                    href={`/uslugi/${service.slug}`}
-                    className="flex h-full flex-col gap-3 px-3 py-4 transition-colors duration-150 hover:bg-fg hover:text-bg xl:px-5"
-                  >
-                    <span className="label opacity-60">{service.number}</span>
-                    <span className="text-[0.8125rem] font-medium leading-tight tracking-[-0.01em] xl:text-[0.9375rem]">{service.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
       </section>
 
@@ -123,36 +103,13 @@ export default function Home() {
 
       <PixelTransition from="light" to="dark" seed={23} />
 
-      {/* 3. Usługi: duże wiersze */}
+      {/* 3. Usługi: indeks + panel szczegółów */}
       <section className="theme-dark dots">
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
-          <FadeIn>
-            <SectionHeader label=".01 — Usługi" note="Od audytu po utrzymanie" title="Usługi" count={services.length} />
-            <ul className="mt-10 border-b border-line md:mt-16">
-              {services.map((service) => (
-                <li key={service.slug} className="border-t border-line">
-                  <Link
-                    href={`/uslugi/${service.slug}`}
-                    className="group -mx-5 block px-5 py-6 transition-colors duration-150 hover:bg-fg hover:text-bg md:-mx-6 md:grid md:grid-cols-12 md:items-center md:gap-x-6 md:px-6 md:py-7 lg:py-9"
-                  >
-                    <span className="flex items-center justify-between md:col-span-1 md:block md:self-start md:pt-3">
-                      <span className="label text-mute group-hover:text-bg">{service.number}</span>
-                      <Arrow className="text-[1.25rem] md:hidden" />
-                    </span>
-                    <span className="mt-3 block text-[1.75rem] font-medium leading-none tracking-[-0.04em] md:col-span-7 md:mt-0 md:text-[clamp(2rem,4.4vw,4.25rem)] md:leading-[0.95] md:tracking-[-0.05em]">
-                      {service.name}
-                    </span>
-                    <span className="mt-3 block text-[1rem] text-mute group-hover:text-bg md:col-span-3 md:mt-0">
-                      {service.short}
-                    </span>
-                    <span className="hidden justify-self-end md:col-span-1 md:block">
-                      <Arrow className="text-[2rem]" />
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
+          <SectionHeader label=".01 — Usługi" note="Od audytu po utrzymanie" title="Usługi" count={services.length} />
+          <div className="mt-10 md:mt-16">
+            <ServicesIndex items={services} />
+          </div>
         </div>
       </section>
 
@@ -277,24 +234,17 @@ export default function Home() {
 
       <PixelTransition from="dark" to="light" seed={53} />
 
-      {/* 7. Proces: jedna kolumna kroków, na desktopie schodkowo */}
+      {/* 7. Metoda: etapy pracy, na desktopie animowane scrollem */}
       <section className="theme-light">
-        <div className={`wrap ${topAfterBand} ${bottom}`}>
-          <SectionHeader label=".05 — Proces" note="Od rozmowy do utrzymania" title="Proces" count={processSteps.length} />
-          <FadeIn>
-            <ol className="mt-10 border-b border-line md:mt-16">
-              {processSteps.map((step, i) => (
-                <li key={step.name} className="grid-12 gap-y-3 border-t border-line py-6 md:py-8">
-                  <div className={`col-span-12 flex gap-5 lg:col-span-5 ${stairName[i]}`}>
-                    <span className="label w-8 shrink-0 pt-2 text-mute">{two(i + 1)}</span>
-                    <h3 className="h3">{step.name}</h3>
-                  </div>
-                  <p className={`col-span-12 pl-[3.25rem] text-mute lg:col-span-3 lg:pl-0 ${stairText[i]}`}>{step.text}</p>
-                </li>
-              ))}
-            </ol>
-          </FadeIn>
+        <div className={`wrap ${topAfterBand} pb-10 md:pb-16`}>
+          <SectionHeader label=".05 — Metoda" note="Ta sama w każdym projekcie" title="Metoda" count={method.length}>
+            <p>
+              Pracujemy według własnej metody. Każdy projekt przechodzi przez te same cztery etapy, więc na każdym
+              z nich wiesz, co się dzieje i co dostajesz.
+            </p>
+          </SectionHeader>
         </div>
+        <Method />
       </section>
 
       {/* 8. FAQ */}

@@ -1,16 +1,53 @@
-export const heroLogs = [
-  "[sec] owasp.check → raport gotowy",
-  "[rag] index.build → ok",
-  "[magento] deploy.staging → ok",
-  "[ci] tests.run → zaliczone",
-  "[sec] deps.audit → brak krytycznych",
-  "[rag] eval.answers → ok",
-  "[shop] cwv.measure → zapisano",
-  "[api] contract.verify → ok",
-  "[ops] backup.verify → ok",
-  "[sec] access.review → zakończony",
-  "[magento] cache.warm → ok",
-  "[ci] deploy.production → ok",
+/** Pliki pisane na żywo w edytorze w hero. Dekoracja: kod ilustracyjny, linie do 56 znaków. */
+export const heroFiles = [
+  {
+    name: "audit.ts",
+    code: [
+      "// audyt bezpieczeństwa sklepu",
+      'import { scan, report } from "./security";',
+      "",
+      "export async function audit(shop: Shop) {",
+      "  const findings = await scan(shop, {",
+      '    standard: "OWASP Top 10",',
+      '    scope: ["checkout", "admin", "api"],',
+      "  });",
+      "  return report(findings.bySeverity());",
+      "}",
+    ],
+    output: ["$ npm run audit", "[ok] skan: checkout, admin, api", "[ok] raport z priorytetami → audit.pdf"],
+  },
+  {
+    name: "assistant.ts",
+    code: [
+      "// odpowiedzi tylko na podstawie dokumentów firmy",
+      "export async function answer(question: string) {",
+      "  const query = guard(question); // prompt injection",
+      "  const docs = await vectors.search(query, { k: 5 });",
+      "",
+      "  if (docs.length === 0) {",
+      "    return handoff.toHuman(question);",
+      "  }",
+      "  return llm.generate({ query, context: docs });",
+      "}",
+    ],
+    output: ["$ npm run eval", "[ok] odpowiedzi zgodne ze źródłami", "[ok] przekazanie do konsultanta"],
+  },
+  {
+    name: "ValidateCart.php",
+    code: [
+      "<?php",
+      "// Magento 2: kontrola koszyka przed zamówieniem",
+      "final class ValidateCartPlugin {",
+      "    public function beforePlaceOrder($subject, $quote) {",
+      "        $this->credit->assertWithinLimit($quote);",
+      "        $this->stock->reserve($quote->getAllItems());",
+      "",
+      "        return [$quote];",
+      "    }",
+      "}",
+    ],
+    output: ["$ bin/magento setup:di:compile", "[ok] testy integracyjne", "[ok] deploy.staging"],
+  },
 ];
 
 export const trio = [
@@ -60,12 +97,39 @@ export const securityRules = [
   { name: "Logowanie i monitoring", text: "wiemy, co dzieje się w systemie, i reagujemy na incydenty" },
 ];
 
-export const processSteps = [
-  { name: "Discovery i audyt", text: "Poznajemy cel biznesowy, użytkowników i istniejące systemy. Sprawdzamy kod i ryzyka." },
-  { name: "Architektura", text: "Dobieramy technologie, projektujemy dane i integracje, opisujemy zakres pierwszego etapu." },
-  { name: "Budowa w sprintach", text: "Dostarczamy działające fragmenty na środowisko testowe i zbieramy uwagi na bieżąco." },
-  { name: "Wdrożenie i hardening", text: "Testy, zabezpieczenie konfiguracji, kopie zapasowe i start z planem awaryjnym." },
-  { name: "Utrzymanie", text: "Monitoring, aktualizacje i dalszy rozwój w stałym rytmie." },
+/** Metoda pracy: etapy sekcji „Metoda”. Punkty zasilają animację na desktopie i listę na mobile. */
+export const method = [
+  {
+    slug: "01-audyt",
+    name: "Audyt",
+    lead: "Zaczynamy od sprawdzenia, co już działa, a co jest ryzykiem.",
+    points: [
+      "Kod i architektura",
+      "Bezpieczeństwo według OWASP",
+      "Wydajność i Core Web Vitals",
+      "Infrastruktura i kopie zapasowe",
+      "Dostępy i uprawnienia",
+      "Zależności i licencje",
+    ],
+  },
+  {
+    slug: "02-projekt",
+    name: "Projekt",
+    lead: "Na podstawie audytu projektujemy architekturę i zakres pierwszego etapu.",
+    points: ["Specyfikacja", "Architektura", "Harmonogram", "Zakres etapu 1"],
+  },
+  {
+    slug: "03-sprinty",
+    name: "Sprinty",
+    lead: "Budujemy w sprintach. Każdy kończy się działającą wersją na środowisku testowym.",
+    points: ["Planowanie", "Budowa", "Code review i testy", "Demo i odbiór"],
+  },
+  {
+    slug: "04-utrzymanie",
+    name: "Wdrożenie i utrzymanie",
+    lead: "Startujemy z planem awaryjnym, a potem pilnujemy, żeby system był szybki i bezpieczny.",
+    points: ["Testy wydajności i bezpieczeństwa", "Hardening konfiguracji", "Go-live z planem awaryjnym", "Monitoring i aktualizacje"],
+  },
 ];
 
 export const faq = [
