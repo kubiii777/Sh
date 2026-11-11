@@ -1,5 +1,7 @@
 # Strona [NAZWA] — zasady trwałe
 
+> **Archiwum.** Aktualna wersja strony jest w repozytorium `kubiii777/polska-nocna-pracownia` (TanStack Start + Lovable). Tu nie wprowadzamy już zmian w stronie.
+
 Pełna specyfikacja: `SPEC.md`. Wnioski z referencji: `docs/research.md`. Decyzje: `docs/decisions.md`.
 
 @AGENTS.md

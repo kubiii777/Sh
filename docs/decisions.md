@@ -68,3 +68,6 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Nagłówki sekcji:** opis w prawej kolumnie, wyrównany do dołu tytułu, zamiast pod nim.
 - **Teksty (po uwadze „za ogólne, wszystko jest B2B”):** zamiast haseł („skala”, „dla firm”, „B2B”) konkretne systemy i sytuacje: PrestaShop → Magento 2, Allegro → ERP → KSeF, „integracja, która po cichu gubi zamówienia”. Słowo „B2B” usunięte z treści; dwa projekty przemianowane (`hurtownia-z-prestashop-na-magento`, `panel-klienta-dystrybutora`). Bez nowych liczb, klientów i obietnic SLA.
 - **Plakaty realizacji:** zamiast skrótu (B2B, ERP, SEC) pokazują, co zrobiono: „PrestaShop → Magento 2”, „Luma → Hyvä”, „Zamówienia / Faktury / Reklamacje”.
+
+## Przeniesienie do Lovable
+- **Aktualna wersja strony jest w repozytorium `kubiii777/polska-nocna-pracownia`** (TanStack Start, połączone z Lovable). To repozytorium (`kubiii777/sh`, Next.js) zostaje jako archiwum: specyfikacja, research i screenshoty. Nowe zmiany strony trafiają tylko tam.
