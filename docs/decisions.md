@@ -40,3 +40,21 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Proces → „Metoda”:** 4 etapy zamiast 5 kroków ze SPEC (Audyt, Projekt, Sprinty, Wdrożenie i utrzymanie), zgodnie z prośbą właściciela. Desktop: sekcja przypięta, scroll steruje animacją każdego etapu (skan obszarów audytu, rysowana architektura, pętla sprintu, checklista startu i siatka monitoringu). Mobile i reduced motion: statyczna lista; ta sama lista jest w DOM na desktopie jako sr-only.
 - **Bez fade-in** w sekcjach Usługi i Metoda, bo mają własny ruch.
 - **Indeksowanie:** domyślnie `noindex, nofollow` na każdej stronie, żeby tymczasowe adresy (np. `*.vercel.app`) nie trafiły do Google. Na produkcji ustawić `NEXT_PUBLIC_ALLOW_INDEXING=true` (faza 6 doda też `robots.ts`).
+
+## Nowa struktura usług (od właściciela) i fazy 3–6
+- **5 usług zamiast 6:** Magento, Aplikacje webowe (Web Apps), Automatyzacje, Dla dużych firm (Big company services), Safe Control. „Magento” i „Safe Control” zostały jako nazwy własne; pozostałe przetłumaczone, bo cała treść jest po polsku.
+- **Rozkład pozycji z listy właściciela:**
+  - Magento: B2B dla hurtowni i producentów, Hyvä i przyspieszanie, migracje (PrestaShop, WooCommerce, Shoper, stare Magento), ekspansja zagraniczna (multistore, waluty, VAT OSS, lokalne płatności), AI w sklepie, gotowe moduły, hosting zarządzany, headless/PWA.
+  - Automatyzacje: integracje z ERP (Comarch, enova, Subiekt, Symfonia, SAP B1), KSeF, marketplace'y (Allegro, Amazon, Empik, Erli, Kaufland), PIM (Akeneo, Pimcore).
+  - Safe Control: audyty techniczne, bezpieczeństwa i konwersji, EAA/WCAG, abonament SLA (aktualizacje, monitoring, backup), testy penetracyjne, hardening.
+  - Aplikacje webowe: SaaS, MVP, panele, dashboardy, headless/PWA.
+  - Dla dużych firm: oprogramowanie dedykowane, migracje ze starych systemów, AI/RAG na własnej infrastrukturze, API, SLA. Treści z dawnych usług „AI i RAG” i „Oprogramowanie dedykowane” trafiły tutaj i do Automatyzacji.
+- **Kategorie realizacji = nazwy usług** (filtry na /realizacje). Projekty demo przypisane na nowo; dwa przemianowane (`integracja-erp-ksef-allegro`, `hyva-i-przyspieszenie-sklepu`).
+- **Hero:** zdanie „Magento, aplikacje webowe, automatyzacje i bezpieczeństwo dla firm.”; w edytorze plik `ksef.ts` zamiast asystenta AI.
+- **CTA podstron usług:** mailto z tematem „Zapytanie: {usługa}” (zamiast `/kontakt?usluga=`, bo nie ma formularza). Kontakt ma listę „W sprawie” z gotowymi tematami.
+- **Dodatkowe sekcje:** Magento ma „Masz już sklep na Magento?” i porównanie Luma / Hyvä / headless (tabela od 768 px, bloki na mobile); Safe Control ma proces nazwany „Jak wygląda audyt”.
+- **„Co dostajesz”** wspólne dla wszystkich usług: raport, kod, dokumentacja, szkolenie.
+- **Galeria realizacji:** 2 dodatkowe plakaty na projekt z tego samego generatora.
+- **Hydracja i reduced motion:** sekcja „Metoda” używa `useReducedMotionSafe` (useSyncExternalStore), bo struktura HTML zależy od tej preferencji.
+- **OG image:** `next/og`, Archivo 500 (woff z @fontsource, latin + latin-ext) i Geist Mono; pliki w `src/assets/fonts`.
+- **Lighthouse (mobile, build z indeksowaniem):** wydajność 91–95, dostępność 100, best practices 100, SEO 100, CLS 0. Bez flagi indeksowania SEO spada do ~69 wyłącznie przez celowe `noindex`.

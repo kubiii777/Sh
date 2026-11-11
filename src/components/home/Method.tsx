@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
+import { useMotionValueEvent, useScroll } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion";
 import { method } from "@/data/home";
 import { seededRandom } from "@/lib/seeded-random";
 
@@ -344,7 +345,7 @@ const visuals = [AuditVisual, DesignVisual, SprintVisual, LaunchVisual];
  * Statyczna lista zostaje w DOM także na desktopie (sr-only), bo animacja jest ukryta przed czytnikami.
  */
 export function Method() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ stage: 0, t: 0 });
   const { scrollYProgress } = useScroll({ target: scrollerRef, offset: ["start start", "end end"] });

@@ -15,6 +15,9 @@ Pełna specyfikacja: `SPEC.md`. Wnioski z referencji: `docs/research.md`. Decyzj
 Next.js 16 (App Router, TypeScript, `cacheComponents`), Tailwind CSS v4, `motion`, Radix (accordion, dialog) stylowane od zera.
 Zabronione: Lenis, GSAP, three.js, shadcn/ui, MUI i inne biblioteki z gotowym wyglądem, biblioteki ikon.
 Kontakt tylko przez `mailto:`. Nie ma formularza ani backendu i nie należy ich dodawać.
+Usługi (5) i realizacje są w `src/data/services.ts` i `src/data/projects.ts`; podstrony generują się z danych.
+Gdy struktura HTML zależy od `prefers-reduced-motion`, używaj `useReducedMotionSafe` (inaczej błąd hydracji).
+Indeksowanie: domyślnie `noindex`; produkcja wymaga `NEXT_PUBLIC_ALLOW_INDEXING=true`.
 `new Date()` i `Math.random()` nie mogą trafić do komponentów serwerowych (błąd prerenderu): tylko komponenty klienckie.
 
 ## Praca
