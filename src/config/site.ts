@@ -4,12 +4,16 @@ export const site = {
   name: "[NAZWA]",
   url: "https://example.com",
   description:
-    "Software house: AI i RAG, cyberbezpieczeństwo, e-commerce, wdrożenia Magento 2, aplikacje webowe i oprogramowanie dedykowane.",
+    "Software house: Magento, aplikacje webowe, automatyzacje i integracje (ERP, KSeF, marketplace'y), oprogramowanie dla dużych firm i Safe Control.",
   email: "[email@domena.pl]",
   phone: "[+48 000 000 000]",
   address: "[Ulica 0, 00-000 Miasto]",
   nip: "[NIP]",
   krs: "[KRS]",
+  /** Link do kalendarza (np. Cal.com, Calendly) dla „Umów 30-min rozmowę”. */
+  calendar: "#",
+  /** Dane administratora do polityki prywatności. */
+  legalName: "[Pełna nazwa firmy]",
   social: {
     linkedin: "#",
     github: "#",
