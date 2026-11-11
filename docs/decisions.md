@@ -18,3 +18,10 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Ticker:** CSS marquee, jedyny ruch w tej sekcji; przy `prefers-reduced-motion` staje się statyczną, zawijaną listą.
 - **Obrazy realizacji demo:** własne abstrakcyjne kompozycje SVG w palecie strony, z napisem „DEMO”. Bez stocków i bez udawanych zrzutów ekranu.
 - **Strzałki:** znak `→` z fontu, bez biblioteki ikon.
+- **Zakres scrolla przejścia:** postęp 0→1 od wejścia pasa od dołu ekranu do chwili, gdy jego dolna krawędź mija połowę ekranu (SPEC: górna). Przy górnej krawędzi rozpad kończył się, zanim pas był dobrze widoczny.
+- **Pas pikseli jako odstęp:** pas ma proporcje 4:1 (360 px przy 1440, 97 px przy 390), więc sekcje od strony pasa mają mniejszy padding.
+- **Fade-in:** nie ma go na hero (LCP) ani w sekcjach z własnym ruchem (ticker, realizacje z `PixelReveal`), żeby utrzymać limit jednego efektu na sekcję.
+- **Etykiety sekcji:** numeracja `.01`–`.07` zaczyna się od Usług; sekcja Trójki nie ma etykiety, bo jej pozycje same noszą numery `.01`–`.03`.
+- **Rok w stopce:** statyczny HTML zawiera rok builda, przeglądarka podstawia bieżący (wymóg `cacheComponents`: czas nie może być czytany w prerenderze).
+- **Screenshoty:** sklejane z kafli viewportu, bo przejścia zależą od pozycji scrolla; zwykły zrzut całej strony pokazałby je wszystkie w stanie początkowym.
+- **Linki do podstron:** `/uslugi/*`, `/realizacje/*`, `/o-nas`, `/kontakt`, `/polityka-prywatnosci` dają 404 do czasu faz 3–5.

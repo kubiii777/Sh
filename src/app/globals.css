@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #0b0b0b;
+  --color-paper: #efeee9;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-mute: var(--mute);
+  --color-line: var(--line);
+  --font-sans: var(--font-archivo), var(--font-archivo-ext), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+}
+
+/* Dwa motywy sekcji. Bez koloru akcentu. */
+:root,
+.theme-dark {
+  --bg: #0b0b0b;
+  --fg: #efeee9;
+  --mute: #8c8c8c;
+  --line: #2a2a2a;
+}
+.theme-light {
+  --bg: #efeee9;
+  --fg: #0b0b0b;
+  --mute: #5e5e5e;
+  --line: #d6d5cf;
+}
+.theme-dark,
+.theme-light {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+html {
+  background-color: #0b0b0b;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+@layer components {
+  /* Siatka: max 1440 px, marginesy 20 / 48 px */
+  .wrap {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .wrap {
+      padding-inline: 48px;
+    }
+  }
+
+  /* Faktura ciemnych sekcji: statyczna siatka kropek */
+  .dots {
+    background-image: radial-gradient(circle at 1px 1px, rgb(239 238 233 / 0.1) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .display {
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  @media (min-width: 768px) {
+    .display {
+      font-size: clamp(2.75rem, 6.5vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+  }
+  .h2 {
+    font-weight: 500;
+    font-size: clamp(2rem, 4.4vw, 4.25rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  .h3 {
+    font-weight: 500;
+    font-size: clamp(1.625rem, 2.8vw, 2.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+  .lead {
+    font-weight: 500;
+    font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Ticker technologii */
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: ticker 48s linear infinite;
+}
+
+/* Zakrycie obrazu przed PixelReveal */
+.pixel-cover {
+  background-color: var(--bg);
+}
+.pixel-cover[data-ready] {
+  background-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fade] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .pixel-cover {
+    display: none;
+  }
+  .ticker-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto !important;
+  }
+  .ticker-track [data-dup] {
+    display: none;
+  }
+}
