@@ -13,10 +13,10 @@ export const metadata = pageMetadata({
 });
 
 const values = [
-  { name: "Bezpieczeństwo od pierwszej linii kodu", text: "Nie dokładamy go na końcu. Code review, testy i minimalne uprawnienia są w każdym projekcie." },
-  { name: "Konkret zamiast obietnic", text: "Mówimy, co zrobimy, w jakim czasie i za ile. Jeśli czegoś nie wiemy, mówimy to wprost." },
-  { name: "Kod należy do klienta", text: "Repozytorium, dokumentacja i dostępy są Twoje. Możesz odejść w każdej chwili i nic nie tracisz." },
-  { name: "Długoterminowa współpraca", text: "Najlepsze efekty dają systemy rozwijane latami przez ludzi, którzy je znają." },
+  { name: "Bezpieczeństwo od pierwszego commita", text: "Nie ma u nas etapu „zabezpieczymy na końcu”. Code review, testy i osobne klucze dla każdego środowiska są od pierwszego dnia." },
+  { name: "Wycena z listą tego, czego w niej nie ma", text: "Zakres, termin i wykluczenia na piśmie. Jeśli czegoś nie wiemy, mówimy to przed podpisaniem umowy, a nie po." },
+  { name: "Możesz od nas odejść", text: "Repozytorium, serwery i hasła są na Twoich kontach od pierwszego dnia. Zmiana agencji to przekazanie dostępów, a nie negocjacje." },
+  { name: "Wolimy lata niż jednorazowe projekty", text: "System, który ktoś zna od lat, naprawia się w godzinę, a nie w tydzień. Dlatego wolimy utrzymywać to, co zbudowaliśmy." },
 ];
 
 const models = [
@@ -37,10 +37,10 @@ export default function AboutPage() {
           <p className="label border-t border-line pt-4 text-mute">O nas</p>
           <h1 className="sr-only">O nas</h1>
           <p className="mt-8 text-[clamp(2rem,4.6vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.045em] md:mt-12">
-            Jesteśmy software house’em, który buduje sklepy, aplikacje i integracje dla firm w Polsce.{" "}
+            Budujemy sklepy na Magento, integracje z ERP i KSeF oraz aplikacje webowe. Potem ich pilnujemy.{" "}
             <span className="text-mute">
-              Zaczynamy od audytu, bo dobre decyzje wymagają faktów. Bezpieczeństwo traktujemy jak część kodu, a nie dodatek.
-              A kiedy system już działa, zostajemy, żeby działał dalej.
+              Zanim coś wycenimy, czytamy kod i logi. Zanim coś wdrożymy, ktoś drugi czyta nasz kod. A gdy system już
+              działa, to do nas, a nie do Ciebie, przychodzi alert, kiedy coś przestaje działać.
             </span>
           </p>
         </div>

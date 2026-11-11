@@ -8,23 +8,25 @@ const fs = require('fs');
 const OUT = path.join(__dirname, '..', 'public', 'images', 'projects');
 const mono = 'file://' + path.join(__dirname, '..', 'node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2');
 const sans = 'file://' + path.join(__dirname, '..', 'src/fonts/archivo-latin-wght-normal.woff2');
+const sansExt = 'file://' + path.join(__dirname, '..', 'src/fonts/archivo-latin-ext-wght-normal.woff2');
 const INK = '#0b0b0b', PAPER = '#efeee9';
 
 function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
+// Na plakacie: co faktycznie zrobiono (skąd → dokąd), a nie ogólne hasło. „>” rysuje strzałkę fontem mono.
 const base = [
-  { slug: 'migracja-hurtowni-b2b-na-magento-2', word: 'B2B', tag: 'deploy.staging', n: '01', dark: false, seed: 23, side: 'top' },
-  { slug: 'integracja-erp-ksef-allegro', word: 'ERP', tag: 'sync.run', n: '02', dark: true, seed: 67, side: 'right' },
-  { slug: 'audyt-bezpieczenstwa-sklepu', word: 'SEC', tag: 'owasp.check', n: '03', dark: true, seed: 37, side: 'top' },
-  { slug: 'asystent-dokumentacji-technicznej', word: 'RAG', tag: 'index.build', n: '04', dark: false, seed: 11, side: 'right' },
-  { slug: 'hyva-i-przyspieszenie-sklepu', word: 'CWV', tag: 'cwv.measure', n: '05', dark: true, seed: 41, side: 'right' },
-  { slug: 'panel-klienta-b2b', word: 'APP', tag: 'ui.build', n: '06', dark: false, seed: 53, side: 'top' },
+  { slug: 'hurtownia-z-prestashop-na-magento', lines: ['PrestaShop', '> Magento 2'], tag: 'migrate.run', n: '01', dark: false, seed: 23, side: 'top' },
+  { slug: 'integracja-erp-ksef-allegro', lines: ['Allegro > ERP', '> KSeF'], tag: 'sync.run', n: '02', dark: true, seed: 67, side: 'right' },
+  { slug: 'audyt-bezpieczenstwa-sklepu', lines: ['OWASP', '+ WCAG'], tag: 'audit.check', n: '03', dark: true, seed: 37, side: 'top' },
+  { slug: 'asystent-dokumentacji-technicznej', lines: ['Pytanie', '> źródło'], tag: 'index.build', n: '04', dark: false, seed: 11, side: 'right' },
+  { slug: 'hyva-i-przyspieszenie-sklepu', lines: ['Luma', '> Hyvä'], tag: 'cwv.measure', n: '05', dark: true, seed: 41, side: 'right' },
+  { slug: 'panel-klienta-dystrybutora', lines: ['Zamówienia', 'Faktury', 'Reklamacje'], tag: 'ui.build', n: '06', dark: false, seed: 53, side: 'top' },
 ];
 // Każdy projekt: plakat główny + 2 obrazy galerii (odwrócone tło i inna krawędź).
 const items = base.flatMap((it) => [
   it,
   { ...it, slug: `${it.slug}-2`, dark: !it.dark, side: it.side === 'top' ? 'right' : 'top', seed: it.seed + 100, tag: `${it.tag} / 02` },
-  { ...it, slug: `${it.slug}-3`, seed: it.seed + 200, side: it.side, word: it.n, tag: `${it.tag} / 03` },
+  { ...it, slug: `${it.slug}-3`, seed: it.seed + 200, side: it.side, lines: [it.n], tag: `${it.tag} / 03` },
 ]);
 
 // Pole pikseli erodujące od jednej krawędzi: przy krawędzi pełne, dalej coraz rzadsze.
@@ -38,18 +40,24 @@ function cells(item) {
   return out;
 }
 
+function size(item) {
+  if (item.lines.length === 1 && item.lines[0].length <= 3) return 520;
+  const longest = Math.max(...item.lines.map((l) => l.length));
+  return Math.min(240, Math.floor(1450 / (longest * 0.56)), Math.floor((item.side === 'top' ? 440 : 700) / item.lines.length / 0.9));
+}
+
 function html(item) {
   const bg = item.dark ? INK : PAPER, fg = item.dark ? PAPER : INK, mute = item.dark ? '#8c8c8c' : '#5e5e5e';
   const label = item.side === 'top' ? 'bottom:56px' : 'top:56px';
-  return `<!doctype html><html><head><style>
-  @font-face{font-family:M;src:url(${mono})}@font-face{font-family:S;src:url(${sans});font-weight:100 900}
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+  @font-face{font-family:M;src:url(${mono})}@font-face{font-family:S;src:url(${sans});font-weight:100 900}@font-face{font-family:S;src:url(${sansExt});font-weight:100 900;unicode-range:U+0100-02AF,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
   *{margin:0;box-sizing:border-box}body{width:1600px;height:1000px;background:${bg};color:${fg};position:relative;overflow:hidden}
   svg{position:absolute;inset:0}
-  .word{position:absolute;left:44px;bottom:${item.side === 'top' ? 96 : 8}px;font:500 520px/0.8 S;letter-spacing:-0.07em}
+  .word{position:absolute;left:52px;bottom:${item.side === 'top' ? 110 : 40}px;font:500 ${size(item)}px/0.9 S;letter-spacing:-0.06em}.word i{font:400 0.8em/1 M;font-style:normal;letter-spacing:0;margin-right:.15em}
   .t{position:absolute;font:400 22px/1 M;letter-spacing:.08em;text-transform:uppercase;color:${mute};left:56px;${label}}
   </style></head><body><svg viewBox="0 0 1600 1000">${cells(item)}</svg>
   <div class="t">${item.n} &nbsp;/&nbsp; [${item.tag}] &nbsp;/&nbsp; projekt demo</div>
-  <div class="word">${item.word}</div></body></html>`;
+  <div class="word">${item.lines.map((l) => l.replace(/^> /, '<i>→</i>').replace(/ > /g, ' <i>→</i>').replace(/^\+ /, '<i>+</i>')).join('<br>')}</div></body></html>`;
 }
 
 (async () => {

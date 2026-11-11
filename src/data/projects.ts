@@ -32,17 +32,17 @@ const gallery = (slug: string, name: string) => [
 
 export const projects: Project[] = [
   {
-    slug: "migracja-hurtowni-b2b-na-magento-2",
-    name: "Migracja hurtowni B2B na Magento 2",
+    slug: "hurtownia-z-prestashop-na-magento",
+    name: "Hurtownia: z PrestaShop na Magento 2",
     category: "Magento",
     year: "2026",
     demo: true,
     featured: true,
     client: "[Klient demo]",
-    industry: "Hurtownia B2B",
-    scope: ["Migracja z PrestaShop", "Platforma B2B", "Integracja z ERP", "Hyvä"],
+    industry: "Hurtownia",
+    scope: ["Migracja z PrestaShop", "Cenniki per klient", "Integracja z ERP", "Hyvä"],
     stack: ["Magento 2", "Hyvä", "PHP 8", "OpenSearch", "RabbitMQ"],
-    summary: "Przeniesienie sprzedaży hurtowej na Magento 2 z cennikami indywidualnymi i integracją z ERP.",
+    summary: "Handlowcy przestali przepisywać zamówienia z maili: klienci zamawiają sami, po SKU, we własnym cenniku.",
     challenge:
       "Hurtownia sprzedawała na sklepie, który nie obsługiwał cenników indywidualnych ani kont firmowych. Handlowcy przyjmowali zamówienia mailem i przepisywali je do ERP.",
     solution: [
@@ -56,8 +56,8 @@ export const projects: Project[] = [
       { label: "Krótszy czas obsługi zamówienia", value: "[XX]%" },
       { label: "Szybsze ładowanie strony kategorii", value: "[XX]%" },
     ],
-    image: img("migracja-hurtowni-b2b-na-magento-2"),
-    gallery: gallery("migracja-hurtowni-b2b-na-magento-2", "Migracja hurtowni B2B na Magento 2"),
+    image: img("hurtownia-z-prestashop-na-magento"),
+    gallery: gallery("hurtownia-z-prestashop-na-magento", "Hurtownia: z PrestaShop na Magento 2"),
   },
   {
     slug: "integracja-erp-ksef-allegro",
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     industry: "E-commerce",
     scope: ["Integracja z ERP", "KSeF", "Allegro", "Monitoring synchronizacji"],
     stack: ["Node.js", "RabbitMQ", "KSeF API", "Allegro API", "Docker"],
-    summary: "Jeden przepływ danych między sklepem, ERP, KSeF i Allegro zamiast ręcznego przepisywania.",
+    summary: "Zamówienie z Allegro trafia do ERP, faktura do KSeF, a stan wraca do sklepu i na aukcję.",
     challenge:
       "Zamówienia z Allegro i sklepu trafiały do ERP ręcznie, stany rozjeżdżały się w ciągu dnia, a firma musiała przygotować się do KSeF.",
     solution: [
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     industry: "E-commerce",
     scope: ["Audyt bezpieczeństwa", "Audyt WCAG / EAA", "Hardening", "Abonament SLA"],
     stack: ["OWASP ZAP", "Burp Suite", "axe", "Cloudflare", "Sentry"],
-    summary: "Audyt według OWASP i WCAG, naprawa znalezisk i stała opieka w abonamencie.",
+    summary: "Sklep bez aktualizacji od lat: lista luk od krytycznych, naprawa, retest i opieka w abonamencie.",
     challenge:
       "Sklep od lat działał bez aktualizacji, a właściciel nie wiedział, czy jest bezpieczny i czy spełnia wymagania dostępności.",
     solution: [
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     industry: "Produkcja",
     scope: ["RAG", "Model na własnej infrastrukturze", "Ewaluacja odpowiedzi"],
     stack: ["Python", "PostgreSQL", "pgvector", "LangChain", "Docker"],
-    summary: "Asystent, który odpowiada na pytania serwisu na podstawie dokumentacji technicznej firmy.",
+    summary: "Serwisant pyta, asystent odpowiada z dokumentacji firmy i pokazuje stronę, z której to wziął.",
     challenge:
       "Serwisanci szukali odpowiedzi w tysiącach stron dokumentacji, a dane nie mogły trafić do publicznych usług AI.",
     solution: [
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     industry: "Moda",
     scope: ["Hyvä", "Core Web Vitals", "Konfiguracja serwera"],
     stack: ["Magento 2", "Hyvä", "Varnish", "Redis", "OpenSearch"],
-    summary: "Przejście z Luma na Hyvä i porządek w cache, indeksach i serwerze.",
+    summary: "Sklep z modą przeniesiony z Luma na Hyvä, plus porządek w cache, indeksach i cronach.",
     challenge: "Sklep ładował się wolno, szczególnie na telefonach, a konwersja z ruchu mobilnego spadała.",
     solution: [
       "Nowy frontend na Hyvä z zachowaniem wyglądu marki.",
@@ -165,16 +165,16 @@ export const projects: Project[] = [
     gallery: gallery("hyva-i-przyspieszenie-sklepu", "Hyvä i przyspieszenie sklepu"),
   },
   {
-    slug: "panel-klienta-b2b",
-    name: "Panel klienta B2B",
+    slug: "panel-klienta-dystrybutora",
+    name: "Panel dla klientów dystrybutora",
     category: "Aplikacje webowe",
     year: "2025",
     demo: true,
     client: "[Klient demo]",
     industry: "Dystrybucja",
-    scope: ["Aplikacja webowa", "Integracja z ERP", "PWA"],
+    scope: ["Panel klienta", "Integracja z ERP", "PWA"],
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js", "AWS"],
-    summary: "Panel, w którym klienci B2B sami sprawdzają zamówienia, faktury i reklamacje.",
+    summary: "Status zamówienia, faktura i reklamacja bez dzwonienia do biura obsługi.",
     challenge: "Klienci pytali o status zamówień i faktury mailem i telefonicznie, a dział obsługi nie nadążał.",
     solution: [
       "Panel z zamówieniami, fakturami, reklamacjami i dokumentami z ERP.",
@@ -186,8 +186,8 @@ export const projects: Project[] = [
       { label: "Klientów aktywnie korzystających z panelu", value: "[XX]%" },
       { label: "Krótszy czas obsługi reklamacji", value: "[XX]%" },
     ],
-    image: img("panel-klienta-b2b"),
-    gallery: gallery("panel-klienta-b2b", "Panel klienta B2B"),
+    image: img("panel-klienta-dystrybutora"),
+    gallery: gallery("panel-klienta-dystrybutora", "Panel dla klientów dystrybutora"),
   },
 ];
 

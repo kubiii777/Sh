@@ -52,12 +52,12 @@ export const heroFiles = [
 
 /** Manifest pod hero. Bez liczb i obietnic, których nie da się sprawdzić. */
 export const manifesto =
-  "Jesteśmy software house'em dla firm, które sprzedają i pracują online. Zaczynamy od audytu, budujemy w krótkich sprintach i zostajemy po starcie, bo oprogramowanie, od którego zależy sprzedaż, trzeba pilnować codziennie.";
+  "Sklep, który zwalnia przy każdej promocji. Integracja, która po cichu gubi zamówienia. Aplikacja, której nikt nie chce ruszać, bo zna ją jedna osoba. Zaczynamy od audytu, naprawiamy w sprintach i zostajemy po starcie, żeby to się nie powtórzyło.";
 
 export const principles = [
-  { name: "Audyt", text: "Zanim cokolwiek zbudujemy, sprawdzamy, co działa, a co jest ryzykiem." },
-  { name: "Sprinty", text: "Po każdym sprincie działająca wersja na środowisku testowym." },
-  { name: "Opieka", text: "Po starcie monitoring, aktualizacje i dalszy rozwój." },
+  { name: "Audyt", text: "Najpierw czytamy Twój kod, logi i konfigurację serwera. Wycena przychodzi potem." },
+  { name: "Sprinty", text: "Na koniec sprintu klikasz działającą wersję na stagingu, a nie oglądasz slajdy." },
+  { name: "Opieka", text: "Patche bezpieczeństwa, monitoring i backup, który ktoś naprawdę odtwarza." },
 ];
 
 export const technologies = [
@@ -67,12 +67,12 @@ export const technologies = [
 ];
 
 export const securityRules = [
-  { name: "OWASP Top 10", text: "każdy projekt sprawdzamy pod kątem najczęstszych podatności" },
-  { name: "Code review", text: "żadna zmiana nie trafia na produkcję bez przeglądu" },
-  { name: "Minimalne uprawnienia", text: "konta i klucze dostają tylko to, czego potrzebują" },
-  { name: "Szyfrowanie", text: "dane chronione w tranzycie i w spoczynku" },
-  { name: "RODO", text: "przetwarzamy tylko dane potrzebne do działania systemu" },
-  { name: "Logowanie i monitoring", text: "wiemy, co dzieje się w systemie, i reagujemy na incydenty" },
+  { name: "OWASP Top 10", text: "SQL injection, XSS i dziury w autoryzacji sprawdzamy przed wydaniem, nie po incydencie" },
+  { name: "Code review", text: "każdy merge czyta druga osoba; nikt nie wrzuca poprawek prosto na produkcję" },
+  { name: "Minimalne uprawnienia", text: "klucz API do wysyłki nie ma dostępu do bazy klientów, a stażysta do panelu admina" },
+  { name: "Szyfrowanie", text: "TLS wszędzie, zaszyfrowane backupy, hasła i klucze w sejfie, nie w repozytorium" },
+  { name: "RODO", text: "zbieramy tylko dane, których system naprawdę używa, i wiemy, gdzie każde z nich leży" },
+  { name: "Logowanie i monitoring", text: "o błędzie w checkoutcie dowiadujemy się z alertu, a nie od klienta" },
 ];
 
 /** Metoda pracy: etapy sekcji „Metoda”. Punkty zasilają animację na desktopie i listę na mobile. */

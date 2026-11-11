@@ -39,7 +39,7 @@ export default function Home() {
 
           <div className="grid-12 mt-8 items-end gap-y-12 md:mt-12">
             <div className="col-span-12 lg:col-span-5">
-              <p className="lead max-w-[30rem] text-mute">Magento, aplikacje webowe, automatyzacje i bezpieczeństwo dla firm.</p>
+              <p className="lead max-w-[30rem] text-mute">Sklepy na Magento, integracje z ERP i KSeF, aplikacje webowe i audyty bezpieczeństwa.</p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 md:mt-10">
                 <Button href="/kontakt" className="w-full sm:w-auto">
                   Rozpocznij projekt
@@ -66,7 +66,7 @@ export default function Home() {
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
           <p className="label flex justify-between border-t border-line pt-4 text-mute">
             <span>.00 — Studio</span>
-            <span>Audyt / Budowa / Opieka</span>
+            <span>Z czym przychodzą klienci</span>
           </p>
           <div className="grid-12 mt-10 gap-y-12 md:mt-16">
             <h2 className="sr-only">Jak działamy</h2>
@@ -95,7 +95,7 @@ export default function Home() {
       <section className="theme-dark dots">
         <div className={`wrap ${topAfterBand} ${bottomBeforeBand}`}>
           <SectionHeader label=".01 — Usługi" note="Od audytu po utrzymanie" title="Usługi" count={services.length}>
-            <p>Pięć obszarów, jedna metoda pracy. Każdy projekt zaczynamy od audytu, niezależnie od usługi.</p>
+            <p>Od sklepu na Magento po system, na którym stoi cała firma. Każdy projekt zaczyna się od audytu.</p>
           </SectionHeader>
           <div className="mt-10 md:mt-16 lg:mt-20">
             <ServicesStack items={services} />
@@ -141,7 +141,7 @@ export default function Home() {
             title="Realizacje"
             count={featured.length}
           >
-            <p>Projekty demonstracyjne. Pokazują zakres i sposób pracy, a nie konkretnych klientów.</p>
+            <p>Tak wyglądają typowe zlecenia. To projekty demonstracyjne: prawdziwe wdrożenia pokażemy, gdy klienci zgodzą się na publikację.</p>
           </SectionHeader>
           <div className="mt-10 md:mt-16">
             <FeaturedProjects items={featured} />
@@ -203,8 +203,8 @@ export default function Home() {
         <div className={`wrap ${topAfterBand} pb-10 md:pb-16`}>
           <SectionHeader label=".05 — Metoda" note="Ta sama w każdym projekcie" title="Metoda" count={method.length}>
             <p>
-              Pracujemy według własnej metody. Każdy projekt przechodzi przez te same cztery etapy, więc na każdym
-              z nich wiesz, co się dzieje i co dostajesz.
+              Ta sama kolejność przy sklepie i przy systemie dla dużej firmy. Na każdym etapie wiesz, co dostajesz
+              i co musisz od siebie dać.
             </p>
           </SectionHeader>
         </div>

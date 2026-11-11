@@ -43,13 +43,13 @@ export const services: Service[] = [
     slug: "magento",
     number: "001",
     name: "Magento",
-    short: "Wdrożenia, migracje, B2B, Hyvä i hosting sklepów na Magento 2 i Adobe Commerce.",
-    value: "Sklepy na Magento 2, które wytrzymują skalę.",
+    short: "Nowe sklepy, migracje z PrestaShop i WooCommerce, Hyvä, hurtownie z cennikami per klient, hosting i moduły.",
+    value: "Magento, które nie zwalnia przy dużym katalogu i nie sypie się po aktualizacji.",
     intro:
-      "Budujemy i rozwijamy sklepy na Magento 2: od nowych wdrożeń i migracji, przez platformy B2B dla hurtowni i producentów, po zarządzany hosting i gotowe moduły. Przyspieszamy istniejące sklepy motywem Hyvä i przygotowujemy je do sprzedaży za granicą.",
+      "Budujemy i rozwijamy sklepy na Magento 2: od nowych wdrożeń i migracji, przez sklepy hurtowni i producentów z cennikami per klient, po zarządzany hosting i gotowe moduły. Przyspieszamy istniejące sklepy motywem Hyvä i przygotowujemy je do sprzedaży za granicą.",
     scope: [
       {
-        name: "Platformy B2B dla hurtowni i producentów",
+        name: "Sklepy dla hurtowni i producentów",
         text: "Cenniki indywidualne, konta firmowe z wieloma użytkownikami, szybkie zamówienia po SKU i limity kupieckie.",
       },
       {
@@ -100,13 +100,13 @@ export const services: Service[] = [
       },
       {
         name: "Platforma nie nadąża za wzrostem",
-        text: "Sprzedaż B2B, kolejne kraje albo duży katalog wymagają więcej, niż obecny sklep potrafi.",
+        text: "Sprzedaż hurtowa, drugi kraj albo katalog liczony w dziesiątkach tysięcy SKU, a sklep już ledwo daje radę.",
       },
     ],
     processTitle: "Proces wdrożenia",
     process: [
       { name: "Analiza i specyfikacja", text: "Procesy sprzedaży, integracje, dane do migracji i zakres pierwszego etapu." },
-      { name: "UX i UI", text: "Ścieżki zakupowe i projekt interfejsu, także dla klientów B2B." },
+      { name: "UX i UI", text: "Ścieżki zakupowe i projekt interfejsu, także dla klientów hurtowych." },
       { name: "Development w sprintach", text: "Działająca wersja na środowisku testowym po każdym sprincie." },
       { name: "Migracja danych", text: "Produkty, klienci, zamówienia i przekierowania 301, z próbną migracją przed startem." },
       { name: "Testy", text: "Wydajnościowe, bezpieczeństwa i akceptacyjne (UAT) z Twoim zespołem." },
@@ -155,7 +155,7 @@ export const services: Service[] = [
           label: "Dla kogo",
           values: [
             "Sklepy, które chcą tylko utrzymać obecny frontend.",
-            "Większość sklepów B2C i B2B, które chcą przyspieszyć.",
+            "Większość sklepów detalicznych i hurtowych, które chcą przyspieszyć.",
             "Marki z nietypowym interfejsem albo wieloma frontami.",
           ],
         },
@@ -169,7 +169,7 @@ export const services: Service[] = [
       },
       {
         q: "Magento Open Source czy Adobe Commerce?",
-        a: "Open Source wystarcza większości sklepów, także B2B, z modułami i integracjami. Adobe Commerce ma sens, gdy potrzebujesz jego wbudowanych funkcji i wsparcia producenta. Pomagamy policzyć, co się bardziej opłaca.",
+        a: "Open Source wystarcza większości sklepów, także hurtowych, z modułami i integracjami. Adobe Commerce ma sens, gdy potrzebujesz jego wbudowanych funkcji i wsparcia producenta. Pomagamy policzyć, co się bardziej opłaca.",
       },
       {
         q: "Czy migracja zaszkodzi SEO?",
@@ -194,13 +194,13 @@ export const services: Service[] = [
     slug: "aplikacje-webowe",
     number: "002",
     name: "Aplikacje webowe",
-    short: "SaaS, MVP, panele klienta i B2B, dashboardy oraz frontendy headless i PWA.",
-    value: "Aplikacje webowe, które rosną razem z firmą.",
+    short: "MVP produktu, panel dla klientów i handlowców, dashboard z danych z kilku systemów, frontend headless.",
+    value: "Panele, SaaS i narzędzia wewnętrzne, które zastępują Excela i maile.",
     intro:
-      "Projektujemy i budujemy aplikacje webowe od MVP po dojrzały produkt: SaaS, panele klienta i B2B, dashboardy. Tworzymy też frontendy headless i PWA dla sklepów, które potrzebują szybkości aplikacji.",
+      "Projektujemy i budujemy aplikacje webowe od MVP po dojrzały produkt: SaaS, panele dla klientów i handlowców, dashboardy. Tworzymy też frontendy headless i PWA dla sklepów, które potrzebują szybkości aplikacji.",
     scope: [
       { name: "SaaS i MVP", text: "Pierwsza wersja produktu w krótkim czasie, z architekturą, która pozwoli go rozwijać." },
-      { name: "Panele klienta i B2B", text: "Zamówienia, faktury, reklamacje i dokumenty w jednym miejscu zamiast maili i arkuszy." },
+      { name: "Panele dla klientów i handlowców", text: "Zamówienia, faktury, reklamacje i dokumenty w jednym miejscu zamiast maili i arkuszy." },
       { name: "Dashboardy i raporty", text: "Dane z wielu systemów na jednym ekranie, z uprawnieniami dla różnych ról." },
       { name: "Headless i PWA", text: "Szybkie frontendy dla sklepów i serwisów, działające także jako aplikacja na telefonie." },
       { name: "API i integracje", text: "Połączenia z ERP, CRM, płatnościami i usługami zewnętrznymi." },
@@ -244,8 +244,8 @@ export const services: Service[] = [
     slug: "automatyzacje",
     number: "003",
     name: "Automatyzacje",
-    short: "Integracje z ERP, KSeF, marketplace'ami i PIM. Dane płyną same, bez przepisywania.",
-    value: "Dane płyną między systemami same.",
+    short: "Integracje z Comarch, enova, Subiektem i SAP B1, KSeF, Allegro i Amazonem, Akeneo i Pimcore.",
+    value: "Zamówienie z Allegro trafia do ERP, faktura do KSeF, stan wraca do sklepu. Bez nikogo po drodze.",
     intro:
       "Łączymy sklep z ERP, KSeF, marketplace'ami i PIM, żeby zamówienia, stany, ceny i faktury nie wymagały ręcznego przepisywania. Tam, gdzie to ma sens, dokładamy AI do pracy z dokumentami.",
     scope: [
@@ -300,8 +300,8 @@ export const services: Service[] = [
     slug: "dla-duzych-firm",
     number: "004",
     name: "Dla dużych firm",
-    short: "Systemy dedykowane, AI na własnej infrastrukturze i migracje ze starych systemów.",
-    value: "Oprogramowanie dla firm, w których błąd kosztuje najwięcej.",
+    short: "Oprogramowanie dedykowane, wymiana starych systemów etapami, RAG na własnych serwerach i stały zespół z SLA.",
+    value: "Systemy, na których stoi firma, i AI, które nie wysyła danych na zewnątrz.",
     intro:
       "Dla większych organizacji budujemy systemy dedykowane, łączymy je z istniejącą infrastrukturą i przenosimy dane ze starych systemów. Wdrażamy AI na własnej infrastrukturze, gdy dane nie mogą opuścić firmy.",
     scope: [
@@ -353,8 +353,8 @@ export const services: Service[] = [
     slug: "safe-control",
     number: "005",
     name: "Safe Control",
-    short: "Audyty, dostępność EAA, testy bezpieczeństwa i abonament SLA z monitoringiem.",
-    value: "Sklep i aplikacja pod stałą kontrolą.",
+    short: "Audyt bezpieczeństwa, wydajności i dostępności (EAA), pentesty i abonament: patche, monitoring, backup.",
+    value: "Wiesz, co jest dziurawe, zanim dowie się o tym ktoś inny.",
     intro:
       "Safe Control to audyty i stała opieka. Sprawdzamy sklepy i aplikacje pod kątem techniki, bezpieczeństwa, konwersji i dostępności, a potem pilnujemy ich w abonamencie SLA z aktualizacjami, monitoringiem i kopiami zapasowymi.",
     scope: [
