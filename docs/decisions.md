@@ -16,8 +16,8 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Nazwa firmy:** `[NAZWA]` w jednym miejscu, `src/config/site.ts`.
 - **Sticky:** przyklejona jest tylko nawigacja (wymóg „Layout globalny”). Zakaz sticky na mobile dotyczy sekcji treści.
 - **Ticker:** CSS marquee, jedyny ruch w tej sekcji; przy `prefers-reduced-motion` staje się statyczną, zawijaną listą.
-- **Obrazy realizacji demo:** własne abstrakcyjne kompozycje SVG w palecie strony, z napisem „DEMO”. Bez stocków i bez udawanych zrzutów ekranu.
-- **Strzałki:** znak `→` z fontu, bez biblioteki ikon.
+- **Obrazy realizacji demo:** własne abstrakcyjne kompozycje w palecie strony (PNG generowane skryptem `scripts/generate-project-images.cjs`), z napisem „Projekt demo”. Bez stocków i bez udawanych zrzutów ekranu.
+- **Strzałki:** własny komponent SVG `Arrow` (Archivo nie ma znaku `→` w podzbiorze latin); w terminalach `→` z Geist Mono. Bez biblioteki ikon.
 - **Zakres scrolla przejścia:** postęp 0→1 od wejścia pasa od dołu ekranu do chwili, gdy jego dolna krawędź mija połowę ekranu (SPEC: górna). Przy górnej krawędzi rozpad kończył się, zanim pas był dobrze widoczny.
 - **Pas pikseli jako odstęp:** pas ma proporcje 4:1 (360 px przy 1440, 97 px przy 390), więc sekcje od strony pasa mają mniejszy padding.
 - **Fade-in:** nie ma go na hero (LCP) ani w sekcjach z własnym ruchem (ticker, realizacje z `PixelReveal`), żeby utrzymać limit jednego efektu na sekcję.
