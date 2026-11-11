@@ -17,20 +17,20 @@ export const heroFiles = [
     output: ["$ npm run audit", "[ok] skan: checkout, admin, api", "[ok] raport z priorytetami → audit.pdf"],
   },
   {
-    name: "assistant.ts",
+    name: "ksef.ts",
     code: [
-      "// odpowiedzi tylko na podstawie dokumentów firmy",
-      "export async function answer(question: string) {",
-      "  const query = guard(question); // prompt injection",
-      "  const docs = await vectors.search(query, { k: 5 });",
+      "// faktury z ERP do KSeF, z ponowieniem przy błędzie",
+      "export async function sendInvoices(erp: Erp) {",
+      '  const invoices = await erp.invoices({ status: "new" });',
       "",
-      "  if (docs.length === 0) {",
-      "    return handoff.toHuman(question);",
+      "  for (const invoice of invoices) {",
+      "    const xml = toFa3(invoice);",
+      "    const result = await ksef.send(xml, { retry: 3 });",
+      "    await erp.markSent(invoice.id, result.number);",
       "  }",
-      "  return llm.generate({ query, context: docs });",
       "}",
     ],
-    output: ["$ npm run eval", "[ok] odpowiedzi zgodne ze źródłami", "[ok] przekazanie do konsultanta"],
+    output: ["$ npm run sync:ksef", "[ok] faktury wysłane do KSeF", "[ok] numery KSeF zapisane w ERP"],
   },
   {
     name: "ValidateCart.php",
@@ -84,8 +84,9 @@ export const trio = [
 ];
 
 export const technologies = [
-  "OpenAI", "Anthropic", "LangChain", "pgvector", "Magento 2", "Hyvä", "Shopify", "React", "Next.js",
-  "Node.js", "Python", "PHP", "Supabase", "AWS", "Cloudflare", "Docker", "OWASP",
+  "Magento 2", "Hyvä", "Adobe Commerce", "Akeneo", "Pimcore", "KSeF", "Comarch ERP", "enova365", "SAP Business One",
+  "Allegro", "Next.js", "React", "Node.js", "PHP", "Python", "OpenAI", "Anthropic", "pgvector", "Docker", "AWS",
+  "Cloudflare", "OWASP",
 ];
 
 export const securityRules = [

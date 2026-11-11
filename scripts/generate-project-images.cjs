@@ -12,14 +12,20 @@ const INK = '#0b0b0b', PAPER = '#efeee9';
 
 function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
-const items = [
-  { slug: 'asystent-dokumentacji-technicznej', word: 'RAG', tag: 'index.build', n: '01', dark: true, seed: 11, side: 'right' },
-  { slug: 'migracja-hurtowni-b2b-na-magento-2', word: 'M2', tag: 'deploy.staging', n: '02', dark: false, seed: 23, side: 'top' },
+const base = [
+  { slug: 'migracja-hurtowni-b2b-na-magento-2', word: 'B2B', tag: 'deploy.staging', n: '01', dark: false, seed: 23, side: 'top' },
+  { slug: 'integracja-erp-ksef-allegro', word: 'ERP', tag: 'sync.run', n: '02', dark: true, seed: 67, side: 'right' },
   { slug: 'audyt-bezpieczenstwa-sklepu', word: 'SEC', tag: 'owasp.check', n: '03', dark: true, seed: 37, side: 'top' },
-  { slug: 'optymalizacja-wydajnosci-sklepu', word: 'CWV', tag: 'cwv.measure', n: '04', dark: false, seed: 41, side: 'right' },
-  { slug: 'panel-klienta-b2b', word: 'APP', tag: 'ui.build', n: '05', dark: true, seed: 53, side: 'right' },
-  { slug: 'integracja-erp-z-magazynem', word: 'ERP', tag: 'sync.run', n: '06', dark: false, seed: 67, side: 'top' },
+  { slug: 'asystent-dokumentacji-technicznej', word: 'RAG', tag: 'index.build', n: '04', dark: false, seed: 11, side: 'right' },
+  { slug: 'hyva-i-przyspieszenie-sklepu', word: 'CWV', tag: 'cwv.measure', n: '05', dark: true, seed: 41, side: 'right' },
+  { slug: 'panel-klienta-b2b', word: 'APP', tag: 'ui.build', n: '06', dark: false, seed: 53, side: 'top' },
 ];
+// Każdy projekt: plakat główny + 2 obrazy galerii (odwrócone tło i inna krawędź).
+const items = base.flatMap((it) => [
+  it,
+  { ...it, slug: `${it.slug}-2`, dark: !it.dark, side: it.side === 'top' ? 'right' : 'top', seed: it.seed + 100, tag: `${it.tag} / 02` },
+  { ...it, slug: `${it.slug}-3`, seed: it.seed + 200, side: it.side, word: it.n, tag: `${it.tag} / 03` },
+]);
 
 // Pole pikseli erodujące od jednej krawędzi: przy krawędzi pełne, dalej coraz rzadsze.
 function cells(item) {

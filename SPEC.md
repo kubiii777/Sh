@@ -115,6 +115,8 @@ Dane w `src/data/services.ts`: slug, numer, nazwa, opis, problemy, zakres, deliv
 8. FAQ: 4 pytania.
 9. CTA: mail z tematem zawierającym nazwę usługi (zamiast `/kontakt?usluga=slug`).
 
+**Struktura usług (zmiana właściciela, zastępuje listę 001–006 poniżej):** 001 Magento, 002 Aplikacje webowe, 003 Automatyzacje, 004 Dla dużych firm, 005 Safe Control. Rozkład pozycji i treści: `src/data/services.ts`, uzasadnienie: `docs/decisions.md`. Poniższa lista zostaje jako materiał źródłowy.
+
 **Treść usług:**
 - **001 AI i RAG** (`ai-rag`): chatbot na dokumentach firmy, wyszukiwarka semantyczna produktów, asystent obsługi klienta z przekazaniem do człowieka, ekstrakcja danych z faktur i umów, modele komercyjne albo open-source na własnej infrastrukturze dla danych wrażliwych, ewaluacja jakości odpowiedzi, ochrona przed prompt injection.
 - **002 Cyberbezpieczeństwo** (`cyberbezpieczenstwo`): audyt sklepu i aplikacji webowej, testy penetracyjne (OWASP), hardening serwerów, CMS i wtyczek (WooCommerce, PrestaShop, Magento, Shopify), WAF/CDN i backupy, przegląd kont i uprawnień, raport z priorytetami (od krytycznych do niskich) z planem naprawy, retest, monitoring ciągły. Dodatkowa sekcja „Jak wygląda audyt”: zakres i zgody → skan i testy → raport → naprawa → retest.

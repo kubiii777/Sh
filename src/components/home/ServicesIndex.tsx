@@ -59,7 +59,7 @@ export function ServicesIndex({ items }: { items: Service[] }) {
           })}
         </ol>
 
-        <div className="col-span-7 flex min-h-[34rem] flex-col border border-line">
+        <div className="col-span-7 flex min-h-[38rem] flex-col border border-line">
           <div className="label flex justify-between border-b border-line px-6 py-3 text-mute xl:px-8">
             <span>
               {two(active + 1)} / {two(items.length)}
@@ -81,7 +81,7 @@ export function ServicesIndex({ items }: { items: Service[] }) {
               </div>
               <div>
                 <ul className="grid grid-cols-2 gap-x-6">
-                  {current.highlights.map((point, i) => (
+                  {current.scope.slice(0, 6).map(({ name: point }, i) => (
                     <li key={point} className="flex gap-4 border-t border-line py-4 text-[1rem]">
                       <span className="label pt-1 text-mute">{two(i + 1)}</span>
                       <span>{point}</span>
