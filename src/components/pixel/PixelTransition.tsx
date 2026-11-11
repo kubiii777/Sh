@@ -10,9 +10,10 @@ type Props = {
   /** Kolor sekcji poniżej: w tym kolorze pojawiają się piksele. */
   to: Tone;
   seed?: number;
-  /** Drobniejsza siatka (48 × 10 / 24 × 5) do porównania z domyślną 24 × 6 / 12 × 3. */
-  fine?: boolean;
 };
+
+/** Siatka: 32 × 8 na desktopie (piksel 45 px przy 1440), 16 × 4 na mobile. Proporcje pasa 4:1. */
+const GRID = { desktop: { cols: 32, rows: 8 }, mobile: { cols: 16, rows: 4 } };
 
 const STATIC_PROGRESS = 0.5;
 
@@ -20,7 +21,7 @@ const STATIC_PROGRESS = 0.5;
  * Pas pikseli między sekcjami o różnych kolorach. Jeden canvas, postęp przypięty do scrolla:
  * 0 gdy pas wchodzi od dołu ekranu, 1 gdy jego dolna krawędź dociera do połowy ekranu.
  */
-export function PixelTransition({ from, to, seed = 1, fine = false }: Props) {
+export function PixelTransition({ from, to, seed = 1 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduce = useReducedMotion();
@@ -65,9 +66,7 @@ export function PixelTransition({ from, to, seed = 1, fine = false }: Props) {
 
     const resize = () => {
       const rect = wrap.getBoundingClientRect();
-      const mobile = window.innerWidth < 768;
-      const cols = fine ? (mobile ? 24 : 48) : mobile ? 12 : 24;
-      const rows = fine ? (mobile ? 5 : 10) : mobile ? 3 : 6;
+      const { cols, rows } = window.innerWidth < 768 ? GRID.mobile : GRID.desktop;
       if (cols !== s.cols || rows !== s.rows) {
         s.cols = cols;
         s.rows = rows;
@@ -89,13 +88,13 @@ export function PixelTransition({ from, to, seed = 1, fine = false }: Props) {
       if (s.frame) cancelAnimationFrame(s.frame);
       s.frame = 0;
     };
-  }, [fine, seed, reduce, schedule, scrollYProgress]);
+  }, [seed, reduce, schedule, scrollYProgress]);
 
   return (
     <div
       ref={wrapRef}
       aria-hidden="true"
-      className={`relative w-full ${fine ? "aspect-[24/5]" : "aspect-[4/1]"}`}
+      className="relative aspect-[4/1] w-full"
       style={{ backgroundColor: COLORS[from] }}
     >
       <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />

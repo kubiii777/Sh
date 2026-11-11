@@ -92,10 +92,17 @@ body {
   }
   @media (min-width: 768px) {
     .display {
-      font-size: clamp(2.75rem, 6.5vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
+      font-size: clamp(2.75rem, 7vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
     }
+  }
+  /* Największy stopień: rozmiar liczony z szerokości kontenera (ustawiany inline w cqw) */
+  .mega {
+    font-weight: 500;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
   }
   .h2 {
     font-weight: 500;
@@ -132,7 +139,7 @@ body {
   }
 }
 .ticker-track {
-  animation: ticker 48s linear infinite;
+  animation: ticker 60s linear infinite;
 }
 
 /* Zakrycie obrazu przed PixelReveal */

@@ -125,21 +125,13 @@ export default function Styleguide() {
               className="object-cover"
             />
           </PixelReveal>
-          <p className="label mt-16 text-mute">Poniżej: przejście jasne → ciemne, siatka ze SPEC (24 × 6, mobile 12 × 3)</p>
+          <p className="label mt-16 text-mute">Poniżej: przejście jasne → ciemne (32 × 8, mobile 16 × 4)</p>
         </div>
       </section>
 
       <PixelTransition from="light" to="dark" seed={5} />
 
       <section className="theme-dark dots">
-        <div className="wrap py-24 md:py-40">
-          <p className="label text-mute">Poniżej: wariant drobny (48 × 10, mobile 24 × 5), bliższy referencji</p>
-        </div>
-      </section>
-
-      <PixelTransition from="dark" to="light" seed={9} fine />
-
-      <section className="theme-light">
         <div className="wrap py-24 md:py-40">
           <p className="label text-mute">Koniec demo. Przejście cofa się przy scrollu w górę.</p>
         </div>

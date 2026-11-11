@@ -9,7 +9,7 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Font:** Archivo (OFL) dla nagłówków i tekstu, Geist Mono dla etykiet. Źródło: pakiety npm `@fontsource-variable/archivo` i `geist`, ładowane przez `next/font/local`, więc build nie potrzebuje sieci.
 - **Tracking nagłówków:** -0.045em zamiast -0.03em ze SPEC, bo Archivo w dużych rozmiarach jest szersze niż Geist. Referencja ma -0.06em.
 - **Kolory:** bez zmian względem SPEC. Alternatywa `#161616` opisana w `research.md`.
-- **Piksele przejść:** kwadraty bez liter, domyślnie 24 × 6 (desktop) i 12 × 3 (mobile) ze SPEC. Wariant drobny do porównania na `/styleguide`.
+- **Piksele przejść:** kwadraty bez liter. Po przeglądzie fazy 2 zmniejszone z 24 × 6 / 12 × 3 do 32 × 8 (desktop, piksel 45 px przy 1440) i 16 × 4 (mobile).
 - **Środowisko:** utworzone środowisko chmurowe `sh-website` z dostępem do trzech referencji i CDN Framera, tylko na potrzeby researchu.
 
 ## Faza 1–2
@@ -25,3 +25,11 @@ Decyzje podjęte bez pytania, zgodnie z zasadą „pytaj tylko o rzeczy blokują
 - **Rok w stopce:** statyczny HTML zawiera rok builda, przeglądarka podstawia bieżący (wymóg `cacheComponents`: czas nie może być czytany w prerenderze).
 - **Screenshoty:** sklejane z kafli viewportu, bo przejścia zależą od pozycji scrolla; zwykły zrzut całej strony pokazałby je wszystkie w stanie początkowym.
 - **Linki do podstron:** `/uslugi/*`, `/realizacje/*`, `/o-nas`, `/kontakt`, `/polityka-prywatnosci` dają 404 do czasu faz 3–5.
+
+## Po przeglądzie fazy 2 („za mało Awwwards, piksele mniejsze”)
+- **Piksele:** 32 × 8 / 16 × 4 zamiast 24 × 6 / 12 × 3.
+- **Mniej powtarzalnego schematu:** każda sekcja ma inny układ zamiast jednego wzoru „etykieta + nagłówek + lista”. Hero: nagłówek na całą szerokość, druga linia wyrównana do prawej, pod spodem indeks usług. Trójka: trzy kolumny rozdzielone liniami. Usługi: wiersze z nazwami do 68 px. Ticker: stopień display. Realizacje: plakaty na przemian z lewej i prawej. Proces: schody. CTA: napis na całą szerokość.
+- **Nagłówki sekcji:** jedno słowo w stopniu display z licznikiem pozycji w indeksie, np. „Usługi (06)”. Liczniki to faktyczna liczba pozycji na stronie.
+- **Skala display:** 7vw zamiast 6.5vw (max nadal 7rem), żeby nagłówek hero wypełniał szerokość w dwóch liniach. Tracking -0.05em.
+- **Plakaty projektów demo:** zamiast losowego szumu ta sama schodkowa krawędź pikseli co w przejściach; jasne plakaty zlewają się z tłem strony celowo.
+- **Indeks usług w hero:** tylko od 1024 px; na mobile hero zostaje nagłówek, zdanie i przycisk.

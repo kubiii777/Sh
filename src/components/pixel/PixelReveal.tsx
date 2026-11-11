@@ -16,7 +16,7 @@ type Props = {
  * Jednorazowe pikselowe odsłonięcie zawartości (obrazu) przy wejściu w viewport.
  * Canvas zakrywa obraz kolorem tła sekcji i znika komórka po komórce.
  */
-export function PixelReveal({ children, className = "", cols = 16, seed = 7 }: Props) {
+export function PixelReveal({ children, className = "", cols = 24, seed = 7 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const inView = useInView(wrapRef, { once: true, amount: 0.25 });

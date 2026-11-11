@@ -69,7 +69,7 @@ Najwyżej jeden efekt ruchu na sekcję. Zaokrąglenia 0–2 px. Sekcje oddzielaj
 - Tylko `motion` i natywny scroll.
 - Sekcje dostają krótki fade-in przy wejściu (opacity i 12 px w górę, 300 ms). Bez staggerów na wszystkim.
 - Główny efekt to przejścia pikselowe (komponent `PixelTransition`). Mechanikę dopasuj do tego, co pokaże research z fazy 0.
-  - Na każdej zmianie koloru sekcji (ciemna↔jasna) pojawia się pas kwadratowych pikseli w kolorze następnej sekcji. Desktop: 24 kolumny × 6 rzędów (piksel = szerokość/24). Mobile: 12 × 3.
+  - Na każdej zmianie koloru sekcji (ciemna↔jasna) pojawia się pas kwadratowych pikseli w kolorze następnej sekcji. Desktop: 32 kolumny × 8 rzędów (piksel = szerokość/32). Mobile: 16 × 4. (Pierwotnie 24 × 6 i 12 × 3; zmniejszone po przeglądzie fazy 2.)
   - Każdy piksel ma stały losowy próg z seeda, żeby nic nie migotało. Rzędy bliżej następnej sekcji mają niższe progi, więc krawędź rozpada się schodkowo.
   - Postęp 0→1 liczony od wejścia pasa od dołu ekranu do połowy ekranu (`useScroll`). Piksel jest widoczny, gdy postęp > próg. Animacja jest przypięta do scrolla i cofa się przy scrollu w górę.
   - Jeden canvas na przejście, nie setki divów. Uwzględnij devicePixelRatio. Przerysowanie w requestAnimationFrame, tylko gdy zmieni się postęp.
@@ -81,7 +81,7 @@ Najwyżej jeden efekt ruchu na sekcję. Zaokrąglenia 0–2 px. Sekcje oddzielaj
 - Hero: nagłówek (max 2.5rem), jedno zdanie, jeden przycisk. Bez bloku terminala.
 - Menu: pełnoekranowy panel z listą linków i CTA, bez animacji, z focus trapem.
 - Usługi i realizacje jako wiersze jeden pod drugim. Cały wiersz klikalny, cel dotyku min. 44 px.
-- Animacje tylko dwie: fade-in i przejścia pikselowe 12 × 3. Jeśli przycinają, zostaw statyczną schodkową krawędź.
+- Animacje tylko dwie: fade-in i przejścia pikselowe 16 × 4. Jeśli przycinają, zostaw statyczną schodkową krawędź.
 - Tekst 16–17 px, odstępy między sekcjami 64–80 px.
 
 ## Layout globalny

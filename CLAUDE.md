@@ -43,11 +43,11 @@ Wymyślone logo, opinie i liczby.
 ## Ruch
 - Tylko `motion` i natywny scroll. Najwyżej jeden efekt ruchu na sekcję.
 - `FadeIn`: opacity + 12 px, 300 ms, raz. Nie na hero (LCP) i nie w sekcji, która ma własny efekt.
-- `PixelTransition from to` między każdą parą sekcji o różnych kolorach. Jeden canvas, progi z seeda, postęp ze scrolla.
+- `PixelTransition from to` między każdą parą sekcji o różnych kolorach. Jeden canvas, progi z seeda, postęp ze scrolla. Siatka 32 × 8 (desktop) i 16 × 4 (mobile).
 - `PixelReveal` dla obrazów realizacji.
 - `prefers-reduced-motion`: wszystko statyczne.
 
 ## Mobile (<768 px)
 Jedna kolumna, bez sekcji poziomych, bez sticky poza nawigacją. Hero: nagłówek max 2.5rem, jedno zdanie, jeden przycisk, bez terminala.
 Menu: pełnoekranowy panel bez animacji, z focus trapem. Wiersze usług i realizacji klikalne w całości, cel dotyku min. 44 px.
-Animacje tylko dwie: fade-in i przejścia pikselowe 12 × 3. Tekst 16–17 px, odstępy sekcji 64–80 px.
+Animacje tylko dwie: fade-in i przejścia pikselowe 16 × 4. Tekst 16–17 px, odstępy sekcji 64–80 px.
